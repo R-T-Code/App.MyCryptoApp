@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:100,400,700" rel="stylesheet">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+<body>
+    <div class="header">
+        <div class="add-crypto">
+                <input type="input" class="add-crypto__input">
+                <input type="submit" class="add-crypto__btn btn" value="Add New Crypto" title="Add new crypto currency">
+                <div class="add-crypto__output-container">
+                        <ul class="add-crypto__output"></ul>
+                </div>
+        </div>
+        <div class="market-cap">
+          <p class="market-cap__cap"></p>
+        </div>
+        <div class="my-portfolio">
+            <input type="submit" class="my-portfolio__btn btn" value="Show My Portfolio" title="Show my portfolio">
+            <p type="input" class="my-portfolio__amount">$ 0.00</p>
+            <i class="fa fa-circle-o-notch fa-spin"></i>
+        </div>
+      </div>
+      <div class="crypto-container"></div>
+</body>
+</html>

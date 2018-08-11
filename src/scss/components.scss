@@ -1,0 +1,148 @@
+//__________HEADER___________
+.add-crypto{
+    // width: 20%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+
+    &__input{ 
+        width: 14rem;
+        height: 2rem;
+        border-radius: 3px;
+        border: none;
+        margin-right: .5rem;
+        transition: .3s;
+
+        &:focus{
+            height: 3rem;
+            border-top: 2px inset grey;
+            border-bottom: 2px inset grey;
+        }
+    }
+    &__btn{
+        height: 3rem;
+    }
+    &__output-container{
+        flex: 0 0 100%;
+        position: relative;
+    }
+    &__output{
+        width: 100%;
+        position: absolute;
+        color: white;
+        border-radius: 3px;
+        background-image: linear-gradient(to bottom, black, grey);
+    }
+    &__input-match{
+        list-style: none;
+
+        &:hover{
+            color: lightgray;
+            cursor: pointer;
+        }
+    }
+}
+.market-cap{
+    color: white;
+    font-size: 4rem;
+
+    @media only screen and (max-width: 1100px){
+        font-size: 3.4rem;
+    }
+    @media only screen and (max-width: 1000px){
+        font-size: 2.6rem;
+    }
+}
+.my-portfolio{
+    display: flex;
+    color: white;
+    align-items: center;
+    min-width: 24rem;
+    &__amount{
+        margin-left: .5rem;
+    }
+    i{
+        fill: red;
+        font-size: 4rem;
+    }
+}
+
+//__________CRYPTO TEMPLATE___________
+.crypto-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    &__crypto{
+        padding: 2rem 3rem;
+        margin: 1rem;
+        background-color: rgba($color: #1d1c1c, $alpha: .9);
+        border-radius: 1rem;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__img{
+        background-image: linear-gradient(to bottom, black, white);
+        border-radius: 1rem;
+        padding: 1rem;
+    }
+    & *{
+       margin-bottom: .5rem; 
+    }
+    &__price-container{
+        display: flex;
+        margin: 0;
+    }
+    &__own-amount{
+        background-color: transparent;
+        color: inherit;
+        border: 1px solid inherit;
+        font-size: inherit;
+        &::-webkit-inner-spin-button, 
+        &::-webkit-outer-spin-button { 
+        -webkit-appearance: none; 
+        margin: 0; 
+        }
+    }
+}
+
+.negative{
+    border: 1px solid black;
+    box-shadow: inset 0 0 4px 4px red;
+}
+.positive{
+    border: 1px solid black;
+    box-shadow: inset 0 0 4px 4px green;
+}
+
+.delete-btn{
+    margin-top: 1rem;
+}
+
+//__________MISCELLANEOUS___________
+.btn{
+    padding: .8rem;
+    border: none;
+    border-radius: 3px;
+    background-image: linear-gradient(to right, grey, lightgrey);
+    transition: .3s;
+    font-family: inherit;
+    
+
+    &:hover{
+        cursor: pointer;
+        transform: translateY(-2px);
+        box-shadow: 0 1px 1px 0 white;
+    }
+    &:active{
+        transform: translateY(0);
+        box-shadow: 0 0 0 0 black;
+    }
+}
+.msg-error{
+    color: red;
+}

@@ -1,3 +1,6 @@
+// import {loader} from './ui';
+
+
 // Creating a new class for API call 
 export class CryptoAPI {
     
@@ -9,10 +12,19 @@ export class CryptoAPI {
         // Return the info as json
         const cryptoInfo = await url.json()
 
+       
+ 
+        // LOADERIS VEIKIA BET PRIES TAI PASIRODO HEADER DALIS. REIKIA SUTVARKYT
+        const loader = document.querySelector('main');
+        loader.style.display = 'none';
+
+
         //Return info from the api as an object
         return {
             cryptoInfo
         }
+
+        
     }
 
     //__Query the rest api for each cryptocurrency
@@ -20,7 +32,7 @@ export class CryptoAPI {
         const url = await fetch(`https://api.coinmarketcap.com/v2/ticker/${id}/`);
 
         const cryptoData = await url.json();
-
+        
         return{
             cryptoData
         }

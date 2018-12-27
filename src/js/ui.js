@@ -16,9 +16,21 @@ export const addCrypto = document.querySelector('.add-crypto'),
              deleteBtn = document.querySelector('.delete-btn'),
              marketCap = document.querySelector('.market-cap__cap'),
              showMoneyBtn = document.querySelector('.my-portfolio__btn'),
-             showMoney = document.querySelector('.my-portfolio__amount');
+             showMoney = document.querySelector('.my-portfolio__amount'),
+             domBody = document.querySelector('body');
 
 export let ownAmount = document.querySelector('.own-amount');
+
+// Add effect to the button if the application is empty
+// check the LS for info if LS is empty add effect to the button
+const lsData = LS.getFromLS();
+if(lsData.length === 0) {
+    addCryptoBtn.classList.add('button-animation');
+}
+// Remove the button effect on input click
+addCryptoInput.addEventListener('click', ()=> {
+    addCryptoBtn.classList.remove('button-animation');
+});
 
 //_Crypto element template
 export function buildCryptoElement (name, price, change, id, amount){
@@ -46,6 +58,7 @@ export function buildCryptoElement (name, price, change, id, amount){
             <input type="number" class="crypto-container__own-amount" value="${amount === undefined ? 0 : amount}">
             <input type="submit" class="crypto-container__own-btn btn" value="update amount" title="Update amount">
             <div class="crypto-container__delete-btn btn" title="Delete crypto currency">X</div>
+            <p class="crypto-container__msg">UPDATED</p>
     `;
     cryptoDiv.innerHTML = cryptoDivContent;
 
@@ -58,15 +71,6 @@ export function buildCryptoElement (name, price, change, id, amount){
         })
     });
     
-    // MAKE ALL BUTTONS SHOW EFFECT ON TOUCH EVENT!!!
-  
-
-    // !!!!!!!!! THIS SHOULD BE IN app.js !!!!!!!!!!!!!!!!!!
-    // !!!!!!!!! THIS SHOULD BE IN app.js !!!!!!!!!!!!!!!!!!
-    // !!!!!!!!! THIS SHOULD BE IN app.js !!!!!!!!!!!!!!!!!!
-    // !!!!!!!!! THIS SHOULD BE IN app.js !!!!!!!!!!!!!!!!!!
-    // !!!!!!!!! THIS SHOULD BE IN app.js !!!!!!!!!!!!!!!!!!
-    // !!!!!!!!! THIS SHOULD BE IN app.js !!!!!!!!!!!!!!!!!!
     // button to delete a crypto from porftolio
     cryptoDiv.addEventListener('click', (e) => {
         if (e.target.classList.contains('crypto-container__delete-btn')){
@@ -84,7 +88,13 @@ export function buildCryptoElement (name, price, change, id, amount){
             e.preventDefault();
             // read the own input value
             ownAmount = e.target.previousElementSibling.value;
-
+            
+            // DISPLAY THE UPDATED MSG ON CLICK
+            e.target.nextElementSibling.nextElementSibling.style.color = 'rgb(55, 255, 0)';
+            setTimeout(() => {
+                e.target.nextElementSibling.nextElementSibling.style.color = 'transparent';
+            }, 700);
+            
             LS.updateLS(id, ownAmount);
             // LS.addCryptoLS(id, ownAmount);
         }
@@ -145,7 +155,6 @@ function matchInput (wordToMatch, cryptoArr){
 
 // addCryptoInput.addEventListener('change', displayMatch);
 addCryptoInput.addEventListener('keyup', displayMatch);
-
 function displayMatch(){
     const matchArray = matchInput(this.value, cryptoArr);
     const html = matchArray.map(crypto => {
@@ -170,46 +179,14 @@ function displayMatch(){
         }   
 }
 
-
-
-
-
-
-
-
-// DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE //
-// DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE //
-// DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE //
-// DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE //
-// DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE //
-// DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE DATE //
-//_Display day and date
-export function showDate () {
-    const date = new Date();
-    // Day returned as 0-6.
-    const weekDay = date.getDay();
-    if(weekDay === 0){
-        return 'Sunday'
-    } else if (weekDay === 1){
-        return 'Monday'
-    } else if (weekDay === 2){
-        return 'Tuesday'
-    } else if (weekDay === 3){
-        return 'Wednesday'
-    } else if (weekDay === 4){
-        return 'Thursday'
-    } else if (weekDay === 5){
-        return 'Friday'
-    } else if (weekDay === 6){
-        return 'Saturday'
-    } 
-    
-    // Year
-    const year = date.getFullYear();
-    // Month
-    const month = date.getMonth();
-    // Day
-    const day = date.getDate();
-    console.log(day);
-}
-showDate();
+// BACKGROUND IMAGE EFFECT 
+let i = 0;
+setInterval(() => {
+    if(i === 360){
+        i = 0;
+    } else {
+        i++;
+    }
+// UPDATING THE CSS VARIABLE INSIDE :ROOT
+domBody.style.setProperty('--background-degree', `${i}deg`)
+}, 30);

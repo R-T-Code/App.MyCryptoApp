@@ -1,3 +1,7 @@
+:root{
+    --background-degree: 20deg;
+}
+
 *,
 *::after,
 *::before{
@@ -17,13 +21,13 @@ html{
 body{
     box-sizing: border-box;
     font-size: 1.6rem;
-    background-image: url("./../img/background.jpeg");
+    background-image: url("./../img/topography.svg"), linear-gradient(var(--background-degree), #fefefe, #727272, #000000);
     background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
     font-family: 'Roboto Mono', monospace;
     font-weight: 100;
-    min-height: 100vh;
+    height: 100vh;
 }
 
 .header{
@@ -40,3 +44,4 @@ body{
         }
     }
 }
+
